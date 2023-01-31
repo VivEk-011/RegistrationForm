@@ -1,0 +1,67 @@
+{% block content%}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <title>Database</title>
+</head>
+<body>
+    
+    <section class="container ">
+        <div class="row justify-content-around text-center  mt-5">
+            <div class="col-sm-8">
+                <h3>CRUD PROJECT</h3>
+            </div>
+        </div>
+    
+
+        <div class="row justify-content-around">
+            <div class="col">
+                <a href="{% url 'aisehi' %}" class="btn btn-success float-end" style="margin-bottom:1px;">Add New</a>
+            </div>
+        </div>
+    
+
+
+     <!--table creation-->
+<div class="row justify-content-around text-center">
+    <div class="col">
+     <table class="table table-striped table-dark ">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">First Name</th>
+            <th scope="col">Last Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">pswd</th>
+            <th scope ="col" style="text-align:center">Operation</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for regt in data %}
+          <tr>
+            <th scope="row">{{forloop.counter}}</th>
+            <td>{{regt.login_fname}}</td>
+            <td>{{regt.login_lname}}</td>
+            <td>{{regt.login_email}}</td>
+            <td>{{regt.pswd}}</td>
+            <th scope="col">
+                <div class="text-center">
+                    <a href="{%url 'destroy' regt.id %}" class="btn btn-danger justify-content-around text-center" style="display:inline;">Delete</a>
+                    <a href="{%url 'edit' regt.id %}" class="btn btn-success">Edit</a>
+                    </div>
+            </th>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div> 
+    </div>
+  </section>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+</body>
+</html>
+
+ {% endblock %}
